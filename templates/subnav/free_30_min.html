@@ -1,0 +1,73 @@
+<div class="uk-position-relative">
+    <img class="uk-position-absolute" height="640" src="{{ url_for('static', path='/graduation-cap-solid.svg') }}"
+         style="right: 0; z-index: -1; opacity: 0.5; fill: #CBE5E4" uk-svg width="640"/>
+
+    <div class="uk-width-2-3@m uk-padding-large">
+        <h1 class="uk-heading-small">Your Digital Breakthrough Starts Here</h1>
+        <p class="uk-text-lead">Book Your Free 30-Minute Consultation Today! No obligations. Just clarity,
+            strategy, and a path forward.</p>
+        <button class="uk-button uk-button-secondary uk-width-auto uk-border-pill uk-text-bold uk-margin-top secondary-bg">
+            Free Consultation
+        </button>
+        <div class="uk-card uk-card-body uk-card-default uk-width-large border-rounded quinary-bg"
+             uk-drop="mode: click">
+            {% include "forms/free_consultation_form.html" %}
+        </div>
+    </div>
+
+    <div class="uk-child-width-1-3@m uk-grid-match" uk-grid>
+        <div>
+            <div class="uk-card uk-card-default uk-card-body border-rounded primary-bg white-text">
+                <div class="uk-text-large uk-text-bold">Ready to take the guesswork out of your digital journey?</div>
+                <p>Our free 30-minute consultation is your opportunity to gain clear, actionable insights tailored to
+                    your business goals. Whether you’re looking to increase sales, improve brand visibility, develop an
+                    app or leverage AI to work smarter, we’re here to guide you every step of the way.</p>
+            </div>
+        </div>
+
+        <div>
+            <div class="uk-card uk-card-default uk-card-body border-rounded secondary-bg white-text">
+                <div class="uk-text-large uk-text-bold">How It Works</div>
+                <ul class="uk-list uk-list-decimal">
+                    <li>
+                        <span class="uk-text-bold">Complete the Form</span>: Tell us a bit about
+                        your business and your goals.
+                    </li>
+                    <li>
+                        <span class="uk-text-bold">Show Up and Get Insights</span>: We’ll meet with
+                        you virtually and provide valuable recommendations you can act on
+                        immediately.
+                    </li>
+                </ul>
+                <button
+                        class="uk-button uk-button-secondary uk-width-1-1 uk-border-pill uk-text-bold uk-margin-top primary-bg uk-align-center">
+                    Free Consultation
+                </button>
+                <div class="uk-card uk-card-body uk-card-default uk-width-large border-rounded quinary-bg"
+                     uk-drop="mode: click">
+                    {% include "forms/free_consultation_form.html" %}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="uk-card uk-card-default uk-card-body border-rounded tertiary-bg white-text">
+                <div class="uk-text-large uk-text-bold">Here’s what you can expect from your consultation</div>
+                <ul class="uk-list uk-list-circle">
+                    <li>
+                        <span class="uk-text-bold">A Personalised Strategy Discussion</span>: We’ll
+                        take the time to understand your unique challenges and goals.
+                    </li>
+                    <li>
+                        <span class="uk-text-bold">Expert Guidance</span>: Get actionable advice
+                        from our seasoned digital marketing and AI strategy experts.
+                    </li>
+                    <li>
+                        <span class="uk-text-bold">Next Steps You Can Act On</span>: Walk away with
+                        clear, practical steps to move your business forward.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

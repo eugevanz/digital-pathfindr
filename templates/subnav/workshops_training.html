@@ -1,0 +1,47 @@
+<div class="uk-position-relative">
+    <img class="uk-position-absolute" height="640" src="{{ url_for('static', path='/person-digging-solid.svg') }}"
+         style="right: 0; z-index: -1; opacity: 0.5; fill: #A2A1BA" uk-svg width="640"/>
+
+    <div class="uk-width-2-3@m uk-padding-large">
+        <h1 class="uk-heading-small">Empower Your Growth: Workshops & Training</h1>
+        <p class="uk-text-lead">Unlock your potential with hands-on learning and expert-led sessions designed to
+            inspire, educate, and elevate your skills.</p>
+        <button
+                class="uk-button uk-button-secondary uk-width-auto uk-border-pill uk-text-bold uk-margin-top secondary-bg">
+            Notify Me About The Next Workshop
+        </button>
+        <div class="uk-card uk-card-body uk-card-default uk-width-large border-rounded quinary-bg"
+             uk-drop="mode: click">
+            {% include "forms/free_consultation_form.html" %}
+        </div>
+    </div>
+
+    <div class="uk-child-width-1-4@m uk-grid-match" uk-grid>
+        {% for item in workshops %}
+        <div>
+            <div class="uk-card uk-card-default uk-card-body border-rounded white-text"
+                 style="background-color: {{ colours[loop.index0 % colours | length] }}">
+                <div class="uk-text-large uk-text-bold">{{ item.fieldData.name }}</div>
+                <p>{{ item.fieldData.tagline }}</p>
+                <button class="uk-button uk-button-small uk-border-pill primary-bg uk-align-right"
+                        uk-sticky="position: bottom; end: !.uk-card">More
+                </button>
+            </div>
+            <div class="uk-card uk-card-body uk-card-default uk-width-large border-rounded quinary-bg"
+                 uk-drop="mode: click">
+                {{ item.fieldData["description-2"] | safe }}
+                <button
+                        class="uk-button uk-button-secondary uk-width-auto uk-border-pill uk-text-bold uk-margin-top secondary-bg">
+                    Notify Me About The Next Workshop
+                </button>
+                <div class="uk-card uk-card-body uk-card-default uk-width-large border-rounded quinary-bg"
+                     uk-drop="mode: click">
+                    {% include "forms/free_consultation_form.html" %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p>No workshops found.</p>
+        {% endfor %}
+    </div>
+</div>

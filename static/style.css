@@ -1,0 +1,50 @@
+@font-face { font-family: Telegraf; src: url("/static/PPTelegraf-Regular.otf") }
+
+.uk-heading-large, .uk-heading-small, .title, h1 {
+   font-family: Telegraf;
+   color: #74648E
+}
+
+@font-face { font-family: Hammersmith; src: url("/static/HammersmithOne-Regular.ttf") }
+
+h2 {
+   font-family: Hammersmith
+}
+
+.uk-text-lead {
+    padding: 0 8px
+}
+
+#embed-map-display img {
+    max-height:none;
+    max-width:none!important;
+    background:none!important;
+}
+
+.border-rounded {
+    border-radius: 16px !important
+}
+
+.primary-bg {
+    background-color: #74648E;
+    color: white
+}
+
+.secondary-bg {
+    background-color: #5B999F;
+    color: white
+}
+
+.tertiary-bg {
+    background-color: #2A3E63;
+    color: white
+}
+
+.quaternary-bg {
+    background-color: #5B999F;
+    color: white
+}
+
+.quinary-bg {
+    background-color: #CBE5E4;
+}

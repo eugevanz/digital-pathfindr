@@ -1,0 +1,31 @@
+<div class="uk-text-large uk-text-bold">Spots are limited</div>
+<p>Secure yours now and take the first step toward a smarter, more effective digital strategy.</p>
+<form class="uk-margin-top uk-grid-small" uk-grid>
+    <div class="uk-width-1-2@s">
+        <div class="uk-inline">
+            <span class="uk-form-icon">
+                <img height="16" src="{{ url_for('static', path='/user-solid.svg') }}" uk-svg width="16">
+            </span>
+            <input class="uk-input uk-border-pill" placeholder="Name & Surname" type="text">
+        </div>
+    </div>
+    <div class="uk-width-1-2@s">
+        <div class="uk-inline">
+            <span class="uk-form-icon">
+                <img height="16" src="{{ url_for('static', path='/building-solid.svg') }}" uk-svg width="16">
+            </span>
+            <input class="uk-input uk-border-pill" placeholder="Company name" type="text">
+        </div>
+    </div>
+    <div class="uk-width-1-1">
+        <div class="uk-inline">
+            <span class="uk-form-icon">
+                <img height="16" src="{{ url_for('static', path='/envelope-solid.svg') }}" uk-svg width="16">
+            </span>
+            <input class="uk-input uk-border-pill" placeholder="Email address" type="text">
+        </div>
+    </div>
+    <div class="uk-width-1-1">
+        <button class="uk-button uk-button-secondary uk-border-pill uk-text-bold secondary-bg">Submit</button>
+    </div>
+</form>

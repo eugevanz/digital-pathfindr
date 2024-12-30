@@ -1,0 +1,18 @@
+<div class="uk-width-2-3@m uk-margin-xlarge-bottom">
+    <h1 class="uk-heading-small">Strategy That Aligns with Your Path to Success</h1>
+    <p class="uk-text-lead">Our Strategy Solutions aren’t guesswork — they’re precision, purpose, and
+        performance-driven plans designed to increase your revenue, visibility, and efficiency.</p>
+</div>
+<div class="uk-child-width-1-3@m uk-grid-small" uk-grid="masonry: next">
+    {% for item in strategies %}
+    <div>
+        <div class="uk-card uk-card-default uk-card-body uk-card-small border-rounded">
+            <h3 class="uk-card-title">{{ item.fieldData.name }}</h3>
+            <p>{{ item.fieldData.tagline }}</p>
+            <div class="uk-text-small">{{ item.fieldData["copy"] | safe }}</div>
+        </div>
+    </div>
+    {% else %}
+    <p>No workshops found.</p>
+    {% endfor %}
+</div>

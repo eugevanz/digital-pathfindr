@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- UIkit CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/css/uikit.min.css" rel="stylesheet"/>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet"/>
+    <title>Digital Pathfindr</title>
+</head>
+<style>
+    @font-face { font-family: Telegraf; src: url("/static/PPTelegraf-Regular.otf") }
+
+    .uk-heading-large, .uk-heading-small, .title, h1 {
+       font-family: Telegraf;
+       color: #74648E
+    }
+
+    @font-face { font-family: Hammersmith; src: url("/static/HammersmithOne-Regular.ttf") }
+
+    h2 {
+       font-family: Hammersmith
+    }
+
+    .uk-text-lead {
+        padding: 0 8px
+    }
+
+    #embed-map-display img {
+        max-height:none;
+        max-width:none!important;
+        background:none!important;
+    }
+
+    .border-rounded {
+        border-radius: 16px !important
+    }
+
+    .primary-bg {
+        background-color: #74648E
+    }
+
+    .secondary-bg {
+        background-color: #5EC6AE
+    }
+
+    .tertiary-bg {
+        background-color: #2A3E63
+    }
+
+    .quaternary-bg {
+        background-color: #5B999F
+    }
+
+    .quinary-bg {
+        background-color: #CBE5E4
+    }
+
+    .white-text {
+        color: white
+    }
+
+    .uk-text-large {
+        font-size: 22px
+    }
+</style>
+<body>
+
+<div class="tertiary-bg uk-padding-small">
+    <div class="uk-container">
+        <ul class="uk-subnav" uk-margin>
+            <li class="uk-margin-auto-right">
+                <a href="#" style="color: white">Contact Us <span uk-drop-parent-icon></span></a>
+                <div class="uk-dropbar uk-dropbar-top"
+                     uk-drop="stretch: x; mode: click; offset: 20; animation: reveal-top">
+                    <div class="uk-container">
+                        {% include "subnav/contact_us.html" %}
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="uk-button uk-border-pill primary-bg uk-text-bold" style="color: white">
+                    Free 30 min Consultation <span uk-drop-parent-icon></span>
+                </a>
+                <div class="uk-dropbar uk-dropbar-top"
+                     uk-drop="stretch: true; mode: click; offset: 15; animation: reveal-top">
+                    <div class="uk-container">
+                        {% include "subnav/free_30_min.html" %}
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="uk-button uk-border-pill quaternary-bg uk-text-bold" style="color: white">
+                    Workshops & Training <span uk-drop-parent-icon></span>
+                </a>
+                <div class="uk-dropbar uk-dropbar-top"
+                     uk-drop="stretch: true; mode: click; offset: 15; animation: reveal-top">
+                    <div class="uk-container">
+                        {% include "subnav/workshops_training.html" %}
+                    </div>
+                </div>
+            </li>
+            <li><a class="uk-button uk-border-pill primary-bg uk-text-bold" style="color: white">
+                Resources <span uk-drop-parent-icon></span>
+            </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    <nav class="uk-navbar-container" style="background-color: #CBE5E4">
+        <div class="uk-container uk-padding-small" uk-navbar>
+            <div class="uk-navbar-left">
+                <a aria-label="Back to Home" class="uk-navbar-item uk-logo" hx-get="/header/"
+                   hx-target="#page">
+                    <img alt="Digital Pathfindr logo" height="60"
+                         src="{{ url_for('static', path='/Digital Pathfindr Logo.007.png') }}"
+                         width="200"/>
+                </a>
+            </div>
+            <div class="uk-navbar-right">
+                <a class="uk-navbar-toggle uk-hidden@m" href="#" uk-navbar-toggle-icon></a>
+                <ul class="uk-navbar-nav uk-visible@m uk-text-bold">
+                    <li><a hx-get="/branding/" hx-target="#page">Branding</a></li>
+                    <li><a hx-get="/marketing/" hx-target="#page">Marketing</a></li>
+                    <li><a hx-get="/strategy/" hx-target="#page">Strategy</a></li>
+                    <li><a hx-get="/content_creation_solution/" hx-target="#page">Content Creation</a></li>
+                    <li><a hx-get="/website_app_development_solution/" hx-target="#page">Web & App Development</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="uk-section uk-section-large">
+    <div class="uk-container" hx-get="/header/" hx-trigger="load" id="page"></div>
+</div>
+
+{% include "footer.html" %}
+
+</body>
+</html>
