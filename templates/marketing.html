@@ -1,18 +1,23 @@
-<div class="uk-width-2-3@m uk-margin-xlarge-bottom">
-    <h1 class="uk-heading-small">More Visibility. More Clicks. More Sales.</h1>
-    <p class="uk-text-lead">We’re not just marketers — we’re growth partners. Our marketing solutions are designed
-        to drive measurable results, from traffic and leads to sales and revenue. No shortcuts, just strategy.</p>
-</div>
-<div class="uk-child-width-1-3@m uk-grid-small" uk-grid="masonry: next">
-    {% for item in marketing_solutions %}
-    <div>
-        <div class="uk-card uk-card-default uk-card-body uk-card-small border-rounded" style="border-radius: 16px">
-            <h3 class="uk-card-title">{{ item.fieldData.name }}</h3>
-            <p>{{ item.fieldData.tagline }}</p>
-            <div class="uk-text-small">{{ item.fieldData.result | safe }}</div>
-        </div>
+<div class="uk-position-relative">
+    <img class="uk-position-absolute" height="640" src="{{ url_for('static', path='/store-solid.svg') }}"
+         style="right: 0; z-index: -1; opacity: 0.5; fill: #374759" uk-svg width="640"/>
+
+    <div class="uk-width-2-3@m uk-margin-xlarge-bottom">
+        <h1 class="uk-heading-small">More Visibility. More Clicks. More Sales.</h1>
+        <p class="uk-text-lead">We’re not just marketers — we’re growth partners. Our marketing solutions are designed
+            to drive measurable results, from traffic and leads to sales and revenue. No shortcuts, just strategy.</p>
     </div>
-    {% else %}
-    <p>No workshops found.</p>
-    {% endfor %}
+    <div class="uk-child-width-1-3@m" uk-grid="masonry: next">
+        {% for item in marketing_solutions %}
+        <div>
+            <div class="uk-card uk-card-default uk-card-body border-rounded" style="border-radius: 16px">
+                <h3 class="uk-card-title">{{ item.fieldData.name }}</h3>
+                <p>{{ item.fieldData.tagline }}</p>
+                <div class="uk-text-small">{{ item.fieldData.result | safe }}</div>
+            </div>
+        </div>
+        {% else %}
+        <p>No workshops found.</p>
+        {% endfor %}
+    </div>
 </div>
