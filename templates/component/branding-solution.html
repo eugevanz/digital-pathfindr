@@ -1,0 +1,9 @@
+<div id="modal-more-info-{{ slug }}" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body border-rounded white-text"
+         style="background-color: {{ colour }}">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-text-large uk-text-bold">{{ name }}</div>
+        <p class="uk-text-small">{{ what_it_is }}</p>
+        <div class="uk-text-small">{{ what_you_get | safe }}</div>
+    </div>
+</div>

@@ -9,10 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.16/dist/js/uikit-icons.min.js"></script>
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
     <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet"/>
+    <script async src="https://unpkg.com/@splinetool/viewer@1.9.54/build/spline-viewer.js" type="module"></script>
+
     <title>Digital Pathfindr</title>
 </head>
 <style>
     @font-face { font-family: Telegraf; src: url("/static/PPTelegraf-Regular.otf") }
+
+    @font-face { font-family: Telegraf; src: url("/static/PPTelegraf-UltraBold.otf"); font-weight: 800 }
 
     .uk-heading-large, .uk-heading-small, .title, h1 {
        font-family: Telegraf;
@@ -66,10 +70,15 @@
     .uk-text-large {
         font-size: 22px
     }
+
+    body {
+        background: linear-gradient(to top right, #CBE5E4, #74648E 99%);
+        background-size: cover
+    }
 </style>
 <body>
 
-<div class="tertiary-bg uk-padding-small">
+<div class="tertiary-bg uk-padding-small" id="subnav">
     <div class="uk-container">
         <ul class="uk-subnav" uk-margin>
             <li class="uk-margin-auto-right">
@@ -86,7 +95,7 @@
                     Free 30 min Consultation <span uk-drop-parent-icon></span>
                 </a>
                 <div class="uk-dropbar uk-dropbar-top"
-                     uk-drop="stretch: true; mode: click; offset: 15; animation: reveal-top">
+                     uk-drop="stretch: x; mode: click; offset: 15; animation: reveal-top">
                     <div class="uk-container">
                         {% include "subnav/free_30_min.html" %}
                     </div>
@@ -97,7 +106,7 @@
                     Workshops & Training <span uk-drop-parent-icon></span>
                 </a>
                 <div class="uk-dropbar uk-dropbar-top"
-                     uk-drop="stretch: true; mode: click; offset: 15; animation: reveal-top">
+                     uk-drop="stretch: x; mode: click; offset: 15; animation: reveal-top">
                     <div class="uk-container">
                         {% include "subnav/workshops_training.html" %}
                     </div>
@@ -115,21 +124,35 @@
     <nav class="uk-navbar-container" style="background-color: #CBE5E4">
         <div class="uk-container uk-padding-small" uk-navbar>
             <div class="uk-navbar-left">
-                <a aria-label="Back to Home" class="uk-navbar-item uk-logo" hx-get="/header/"
-                   hx-target="#page">
-                    <img alt="Digital Pathfindr logo" height="60"
-                         src="{{ url_for('static', path='/Digital Pathfindr Logo.007.png') }}"
-                         width="200"/>
+                <a aria-label="Back to Home" class="uk-navbar-item uk-logo uk-flex uk-flex-middle" href="#subnav"
+                   hx-get="/header/" hx-target="#page">
+                    <img alt="Digital Pathfindr logo" height="66"
+                         src="{{ url_for('static', path='/the_d.png') }}"
+                         width="66"/>
+                    <div class="uk-text-bolder"
+                         style="font-size: 30px; line-height: 28px; font-family: Telegraf; font-weight: 800; color: #74648E; height: 52px">
+                        Digital<br/>Pathfin<span style="color: #5EC6AE">dr</span>
+                    </div>
                 </a>
             </div>
             <div class="uk-navbar-right">
                 <a class="uk-navbar-toggle uk-hidden@m" href="#" uk-navbar-toggle-icon></a>
                 <ul class="uk-navbar-nav uk-visible@m uk-text-bold">
-                    <li><a hx-get="/branding/" hx-target="#page">Branding</a></li>
-                    <li><a hx-get="/marketing/" hx-target="#page">Marketing</a></li>
-                    <li><a hx-get="/strategy/" hx-target="#page">Strategy</a></li>
-                    <li><a hx-get="/content_creation_solution/" hx-target="#page">Content Creation</a></li>
-                    <li><a hx-get="/website_app_development_solution/" hx-target="#page">Web & App Development</a>
+                    <li><a href="#subnav" hx-get="/branding/" hx-target="#page" style="color: #74648E">Branding</a></li>
+                    <li>
+                        <a href="#subnav" hx-get="/marketing/" hx-target="#page" style="color: #74648E">Marketing</a>
+                    </li>
+                    <li><a href="#subnav" hx-get="/strategy/" hx-target="#page" style="color: #74648E">Strategy</a></li>
+                    <li>
+                        <a href="#subnav" hx-get="/content_creation_solution/" hx-target="#page" style="color: #74648E">
+                            Content Creation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#subnav" hx-get="/website_app_development_solution/" hx-target="#page"
+                           style="color: #74648E">
+                            Web & App Development
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -137,8 +160,13 @@
     </nav>
 </div>
 
-<div class="uk-section uk-section-large">
-    <div class="uk-container" hx-get="/header/" hx-trigger="load" id="page"></div>
+<div hx-get="/header/" hx-trigger="load" id="page"></div>
+
+<div id="modal-notify-me" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body border-rounded uk-width-large">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        {% include "forms/free_consultation_form.html" %}
+    </div>
 </div>
 
 {% include "footer.html" %}

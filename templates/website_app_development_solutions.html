@@ -1,23 +1,25 @@
 <div class="uk-section uk-section-large">
     <div class="uk-container">
         <div class="uk-position-relative uk-animation-slide-right-medium">
-            <img class="uk-position-absolute" height="640"
-                 src="{{ url_for('static', path='/chess-knight-regular.svg') }}"
-                 style="right: 0; z-index: -1; opacity: 0.5; color: #876D5C" uk-svg width="640"/>
+            <img class="uk-position-absolute" height="640" src="{{ url_for('static', path='/code-solid.svg') }}"
+                 style="right: 0; z-index: -1; opacity: 0.5; color: #98C6A3" uk-svg width="640"/>
 
             <div class="uk-width-2-3@m uk-margin-xlarge-bottom">
-                <div class="uk-text-bold uk-text-uppercase uk-flex uk-flex-middle" style="color: #876D5C">
-                    <img class="uk-margin-small-right" height="18"
-                         src="{{ url_for('static', path='/chess-knight-regular.svg') }}"
+                <div class="uk-text-bold uk-text-uppercase uk-flex uk-flex-middle" style="color: #98C6A3">
+                    <img class="uk-margin-small-right" height="18" src="{{ url_for('static', path='/code-solid.svg') }}"
                          uk-svg width="18"/>
-                    Strategy Solutions
+                    Web & App Development Solutions
                 </div>
-                <h1 class="uk-heading-small">Strategy That Aligns with Your Path to Success</h1>
-                <p class="uk-text-lead">Our Strategy Solutions aren’t guesswork — they’re <strong>precision,
-                    purpose, and performance-driven</strong> plans designed to increase your revenue, visibility, and efficiency.</p>
+                <h1 class="uk-heading-small">Custom Websites, Apps, and Digital Solutions That Elevate Your Brand and
+                    Drive
+                    Growth</h1>
+                <p class="uk-text-lead">We design, build, and maintain websites and apps that stand out, sell more, and
+                    grow
+                    with your business. From design to development, <span class="uk-text-bold">we help you find the 'more equal' path.</span>
+                </p>
             </div>
             <div class="uk-child-width-1-3@m uk-grid-match" uk-grid>
-                {% for item in strategies %}
+                {% for item in website_app_development_solutions %}
                 <div>
                     <div class="uk-card uk-card-default uk-card-body border-rounded white-text"
                          style="background-color: {{ colours[loop.index0 % colours | length] }}">
@@ -27,9 +29,9 @@
                            href="#modal-more-info-{{ item.fieldData.slug }}" uk-toggle>
                             More
                         </a>
-                        {% with copy=item.fieldData["copy"], slug=item.fieldData.slug, name=item.fieldData.name,
+                        {% with copy=item.fieldData["copy-2"], slug=item.fieldData.slug, name=item.fieldData.name,
                         colour=colours[loop.index0 % colours | length] %}
-                        {% include "component/strategy-solution.html" %}
+                        {% include "component/web-app-solution.html" %}
                         {% endwith %}
                     </div>
                 </div>

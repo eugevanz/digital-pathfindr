@@ -1,164 +1,209 @@
-<div class="uk-position-relative uk-margin-xlarge-bottom" uk-grid>
-    <div class="uk-width-3-5@m">
-        <h1 class="uk-heading-large uk-margin-remove-bottom">Ready to <span class="uk-text-bold">craft your</span>
-            digital <span class="uk-text-bold">path</span>?</h1>
-        <p class="uk-text-lead uk-width-large">Explore solutions in Branding, Digital & AI Marketing,
-            and Web & App Development to elevate your digital presence.</p>
-        <button class="uk-button uk-button-secondary uk-width-auto uk-border-pill uk-text-bold secondary-bg">
-            Free Consultation
-        </button>
+<div class="uk-section uk-section-large uk-background-contain"
+     data-src="{{ url_for('static', path='/flat_maze_.png') }}" uk-img>
+    <!--    <img class="uk-position-absolute" src=""-->
+    <!--         style="opacity: 1"/>-->
+    <div class="uk-container">
+        <div class="uk-position-relative uk-margin-xlarge-bottom uk-animation-slide-left-medium" uk-grid>
+            <div class="uk-width-3-5@m">
+
+                <div class="uk-slider-container-offset" uk-slider="autoplay: true; autoplay-interval: 5000">
+                    <div class="uk-position-relative uk-visible-toggle" tabindex="-1">
+                        <div class="uk-slider-items uk-child-width-1-1 uk-grid">
+                            {% for item in taglines %}
+                            <div>
+                                <div class="uk-flex uk-flex-middle uk-text-bold">
+                                    <img class="uk-margin-small-right" height="18"
+                                         src="{{ url_for('static', path=item.icon) }}"
+                                         style="color: {{ item.colour }}" uk-svg width="18"/>
+                                    <span style="color: #74648E">{{ item.tag }}</span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+
+                <h1 class="uk-heading-large uk-margin-remove-bottom uk-text-bold">Ready to craft your digital path?</h1>
+                <p class="uk-text-lead uk-width-large">Explore solutions in Branding, Digital &
+                    AI Marketing,
+                    and Web & App Development to elevate your digital presence.</p>
+                <a class="uk-button uk-button-secondary uk-width-auto uk-border-pill uk-text-bold secondary-bg"
+                   href="#modal-notify-me" uk-toggle>
+                    Free Consultation
+                </a>
+            </div>
+            <!--            <img class="uk-position-absolute uk-visible@m" height="460"-->
+            <!--                 src="{{ url_for('static', path='/digital_head.png') }}"-->
+            <!--                 style="right: 96px; z-index: -1"-->
+            <!--                 uk-img width="460"/>-->
+        </div>
+
+        <div class="uk-slider-container-offset uk-margin-large" uk-slider>
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+                <div
+                        class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-grid uk-grid-small uk-grid-match">
+                    {% for item in workshops %}
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body border-rounded white-text"
+                             style="background-color: {{ colours[loop.index0 % colours | length] }}">
+                            <div class="uk-text-large uk-text-bold">{{ item.fieldData.name }}</div>
+                            <p>{{ item.fieldData.tagline }}</p>
+                            <a class="uk-button uk-button-small uk-border-pill secondary-bg uk-align-right uk-text-bold uk-margin-bottom uk-position-medium uk-position-bottom-right"
+                               href="#modal-more-info-{{ item.fieldData.slug }}" uk-toggle>
+                                More
+                            </a>
+                            {% with description=item.fieldData["description-2"], slug=item.fieldData.slug %}
+                            {% include "component/workshop.html" %}
+                            {% endwith %}
+                        </div>
+                    </div>
+                    {% else %}
+                    <p>No workshops found.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+        </div>
     </div>
-    <img class="uk-position-absolute uk-visible@m" height="460" src="{{ url_for('static', path='/digital_head.png') }}"
-         style="right: 96px; z-index: -1"
-         uk-img width="460"/>
 </div>
 
-<div class="uk-slider-container-offset uk-margin-large" uk-slider="autoplay: true">
-    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
-        <div
-                class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-grid uk-grid-small uk-grid-match">
-            {% for item in workshops %}
-            <div>
-                <div class="uk-card uk-card-default uk-card-body border-rounded white-text"
-                     style="background-color: {{ colours[loop.index0 % colours | length] }}">
-                    <div class="uk-text-large uk-text-bold">{{ item.fieldData.name }}</div>
-                    <p>{{ item.fieldData.tagline }}</p>
-                    <button class="uk-button uk-button-small uk-border-pill secondary-bg uk-align-right"
-                            uk-sticky="position: bottom; end: !.uk-card">More
-                    </button>
+<div class="uk-section uk-section-large">
+    <div class="uk-container">
+        <h1 class="uk-heading-small uk-margin-medium uk-text-center">Digital Pathfindr's Methodology</h1>
+        <div class="uk-child-width-1-2@m uk-grid-large uk-grid-match uk-margin-xlarge-bottom uk-flex-middle uk-light" uk-grid>
+            <div class="uk-width-1-4@m">
+        <span><img class="uk-float-left" height="24"
+                   src="{{ url_for('static', path='/quote-left-solid.svg') }}" uk-svg width="24"></span>
+                <div class="uk-card uk-card-body uk-card-small">
+                    At Digital Pathfindr, we understand that every business is unique, and so is the
+                    journey to its <span class="uk-text-bold">success</span>. That’s why we’ve developed a dynamic,
+                    <span class="uk-text-bold">fit-for-purpose</span> methodology designed to create pathways that lead
+                    directly to <span class="uk-text-bold">growth, visibility, and impact</span>.
                 </div>
-                <div class="uk-card uk-card-body uk-card-default uk-width-large border-rounded quinary-bg"
-                     uk-drop="mode: click">
-                    {{ item.fieldData["description-2"] | safe }}
-                    <button
-                            class="uk-button uk-button-secondary uk-width-auto uk-border-pill uk-text-bold uk-margin-top secondary-bg">
-                        Notify Me About The Next Workshop
-                    </button>
-                    <div class="uk-card uk-card-body uk-card-default uk-width-large border-rounded quinary-bg"
-                         uk-drop="mode: click">
-                        {% include "forms/free_consultation_form.html" %}
+                <span><img class="uk-float-right" height="24"
+                           src="{{ url_for('static', path='/quote-right-solid.svg') }}" uk-svg width="24"></span>
+            </div>
+            <div class="uk-width-expand">
+                <div class="uk-child-width-expand@s uk-grid-small" uk-grid>
+                    <div class="uk-width-auto">
+                        <img height="44" src="{{ url_for('static', path='/person-through-window-solid.svg') }}"
+                             style="fill: #A1C6E0" uk-svg width="44"/>
+                    </div>
+                    <div>
+                        <div class="uk-text-large uk-text-bold" style="color: #A1C6E0">Discover & Define</div>
+                        <div>
+                            Every great journey starts with clarity. We begin by immersing ourselves in your business —
+                            your
+                            brand, your goals, your challenges, and your vision for the future. Through in-depth
+                            consultations
+                            and industry research, we uncover the unique elements that make your brand stand out. This
+                            discovery
+                            phase ensures that every strategy we craft is intentional and rooted in purpose.
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-child-width-expand@s uk-grid-small" uk-grid>
+                    <div class="uk-width-auto">
+                        <img height="44" src="{{ url_for('static', path='/cookie-bite-solid.svg') }}"
+                             style="fill: #74648E"
+                             uk-svg width="44"/>
+                    </div>
+                    <div>
+                        <div class="uk-text-large uk-text-bold" style="color: #74648E">Strategise & Customise</div>
+                        <div>
+                            No cookie-cutter solutions here. Our team of digital strategists and AI specialists
+                            craft tailored strategies that align with your business’s specific needs. From brand
+                            development
+                            and
+                            content marketing to AI-driven insights and sales optimisation, we ensure every move is
+                            purposeful
+                            and impactful.
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-child-width-expand@s uk-grid-small" uk-grid>
+                    <div class="uk-width-auto">
+                        <img height="44" src="{{ url_for('static', path='/person-digging-solid.svg') }}"
+                             style="fill: #98C6A3"
+                             uk-svg width="44"/>
+                    </div>
+                    <div>
+                        <div class="uk-text-large uk-text-bold" style="color: #98C6A3">Build & Implement</div>
+                        <div>
+                            With strategy in hand, we roll up our sleeves and get to work. Our team brings ideas to
+                            life through engaging branding, sleek website development, data-driven content, and
+                            intuitive
+                            digital tools. Our approach ensures everything we build is user-friendly,
+                            conversion-focused,
+                            and
+                            aligned with your goals.
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-child-width-expand@s uk-grid-small" uk-grid>
+                    <div class="uk-width-auto">
+                        <img height="44" src="{{ url_for('static', path='/flask-vial-solid.svg') }}"
+                             style="fill: #876D5C"
+                             uk-svg width="44"/>
+                    </div>
+                    <div>
+                        <div class="uk-text-large uk-text-bold" style="color: #876D5C">Test & Optimise</div>
+                        <div>
+                            We’re not done yet. We believe in continuous improvement. Our iterative approach means we
+                            test, analyse, and optimise as we go, using real-time insights to make informed adjustments.
+                            This
+                            ensures your strategy stays relevant and effective as market dynamics evolve.
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-child-width-expand@s uk-grid-small" uk-grid>
+                    <div class="uk-width-auto">
+                        <img height="44" src="{{ url_for('static', path='/plug-circle-bolt-solid.svg') }}"
+                             style="fill: #2A3E63"
+                             uk-svg width="44"/>
+                    </div>
+                    <div>
+                        <div class="uk-text-large uk-text-bold" style="color: #2A3E63">Empower & Evolve</div>
+                        <div>
+                            Our mission is to make you self-sufficient. We provide ongoing support, training, and
+                            resources, empowering you to maintain and scale your digital presence with confidence. As
+                            your
+                            business grows, so do our strategies, ensuring you are always one step ahead of the
+                            competition.
+                        </div>
                     </div>
                 </div>
             </div>
-            {% else %}
-            <p>No workshops found.</p>
+        </div>
+    </div>
+</div>
+
+<div class="uk-section uk-section-large">
+    <div class="uk-container">
+        <h1 class="uk-heading-small uk-text-center uk-margin-medium">"What People Think About Us"</h1>
+        <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
+            {% for _ in range(3) %}
+            <div>
+                <div class="uk-card uk-card-default uk-card-body">
+                    <div class="uk-flex uk-flex-middle">
+                        <img alt="Border circle" class="uk-border-circle" height="44"
+                             src="{{ url_for('static', path='/eugeva.png') }}"
+                             width="44"/>
+                        <div class="uk-margin-left">
+                            <div class="uk-text-small uk-text-bold">Eugene Van Zyl</div>
+                            <div class="uk-text-meta" style="font-size: 10px">NEWBNG</div>
+                        </div>
+                        <div class="uk-margin-auto-left">
+                            <img height="64" src="{{ url_for('static', path='/quote-right-solid.svg') }}" uk-svg
+                                 width="64">
+                        </div>
+                    </div>
+                    <p class="uk-text-meta">Lorem ipsum sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>
-    <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
-</div>
-
-<h1 class="uk-heading-small uk-margin-medium uk-text-center">Digital Pathfindr's Methodology</h1>
-<div class="uk-child-width-1-2@m uk-grid-large uk-grid-match uk-margin-xlarge-bottom uk-flex-middle" uk-grid>
-    <div class="uk-width-1-4@m">
-        <span><img class="uk-float-left" height="24"
-                   src="{{ url_for('static', path='/quote-left-solid.svg') }}" uk-svg width="24"></span>
-        <div class="uk-card uk-card-body uk-card-small">
-            At Digital Pathfindr, we understand that every business is unique, and so is the
-            journey to its <span class="uk-text-bold">success</span>. That’s why we’ve developed a dynamic,
-            <span class="uk-text-bold">fit-for-purpose</span> methodology designed to create pathways that lead
-            directly to <span class="uk-text-bold">growth, visibility, and impact</span>.
-        </div>
-        <span><img class="uk-float-right" height="24"
-                   src="{{ url_for('static', path='/quote-right-solid.svg') }}" uk-svg width="24"></span>
-    </div>
-    <div class="uk-width-expand">
-        <div class="uk-child-width-expand@s uk-grid-small" uk-grid>
-            <div class="uk-width-auto">
-                <img height="44" src="{{ url_for('static', path='/person-through-window-solid.svg') }}"
-                     style="fill: #A2A1BA" uk-svg width="44"/>
-            </div>
-            <div>
-                <div class="uk-text-large uk-text-bold" style="color: #A2A1BA">Discover & Define</div>
-                <div>
-                    Every great journey starts with clarity. We begin by immersing ourselves in your business — your
-                    brand, your goals, your challenges, and your vision for the future. Through in-depth consultations
-                    and industry research, we uncover the unique elements that make your brand stand out. This discovery
-                    phase ensures that every strategy we craft is intentional and rooted in purpose.
-                </div>
-            </div>
-        </div>
-        <div class="uk-child-width-expand@s uk-grid-small" uk-grid>
-            <div class="uk-width-auto">
-                <img height="44" src="{{ url_for('static', path='/cookie-bite-solid.svg') }}" style="fill: #A1C6E0"
-                     uk-svg width="44"/>
-            </div>
-            <div>
-                <div class="uk-text-large uk-text-bold" style="color: #A1C6E0">Strategise & Customise</div>
-                <div>
-                    No cookie-cutter solutions here. Our team of digital strategists and AI specialists
-                    craft tailored strategies that align with your business’s specific needs. From brand development and
-                    content marketing to AI-driven insights and sales optimisation, we ensure every move is purposeful
-                    and impactful.
-                </div>
-            </div>
-        </div>
-        <div class="uk-child-width-expand@s uk-grid-small" uk-grid>
-            <div class="uk-width-auto">
-                <img height="44" src="{{ url_for('static', path='/person-digging-solid.svg') }}" style="fill: #FFD4A3"
-                     uk-svg width="44"/>
-            </div>
-            <div>
-                <div class="uk-text-large uk-text-bold" style="color: #FFD4A3">Build & Implement</div>
-                <div>
-                    With strategy in hand, we roll up our sleeves and get to work. Our team brings ideas to
-                    life through engaging branding, sleek website development, data-driven content, and intuitive
-                    digital tools. Our approach ensures everything we build is user-friendly, conversion-focused, and
-                    aligned with your goals.
-                </div>
-            </div>
-        </div>
-        <div class="uk-child-width-expand@s uk-grid-small" uk-grid>
-            <div class="uk-width-auto">
-                <img height="44" src="{{ url_for('static', path='/flask-vial-solid.svg') }}" style="fill: #876D5C"
-                     uk-svg width="44"/>
-            </div>
-            <div>
-                <div class="uk-text-large uk-text-bold" style="color: #876D5C">Test & Optimise</div>
-                <div>
-                    We’re not done yet. We believe in continuous improvement. Our iterative approach means we
-                    test, analyse, and optimise as we go, using real-time insights to make informed adjustments. This
-                    ensures your strategy stays relevant and effective as market dynamics evolve.
-                </div>
-            </div>
-        </div>
-        <div class="uk-child-width-expand@s uk-grid-small" uk-grid>
-            <div class="uk-width-auto">
-                <img height="44" src="{{ url_for('static', path='/plug-circle-bolt-solid.svg') }}" style="fill: #98C6A3"
-                     uk-svg width="44"/>
-            </div>
-            <div>
-                <div class="uk-text-large uk-text-bold" style="color: #98C6A3">Empower & Evolve</div>
-                <div>
-                    Our mission is to make you self-sufficient. We provide ongoing support, training, and
-                    resources, empowering you to maintain and scale your digital presence with confidence. As your
-                    business grows, so do our strategies, ensuring you are always one step ahead of the competition.
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<h1 class="uk-heading-small uk-text-center uk-margin-medium">"What People Think About Us"</h1>
-<div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
-    {% for _ in range(3) %}
-    <div>
-        <div class="uk-card uk-card-default uk-card-body">
-            <div class="uk-flex uk-flex-middle">
-                <img alt="Border circle" class="uk-border-circle" height="44"
-                     src="{{ url_for('static', path='/eugeva.png') }}"
-                     width="44"/>
-                <div class="uk-margin-left">
-                    <div class="uk-text-small uk-text-bold">Eugene Van Zyl</div>
-                    <div class="uk-text-meta" style="font-size: 10px">NEWBNG</div>
-                </div>
-                <div class="uk-margin-auto-left">
-                    <img height="64" src="{{ url_for('static', path='/quote-right-solid.svg') }}" uk-svg width="64">
-                </div>
-            </div>
-            <p class="uk-text-meta">Lorem ipsum sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-    </div>
-    {% endfor %}
 </div>
